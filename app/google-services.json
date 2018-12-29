@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "884113086652",
+    "firebase_url": "https://bookrentallocator.firebaseio.com",
+    "project_id": "bookrentallocator",
+    "storage_bucket": "bookrentallocator.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884113086652:android:8ce45bc59ffdc656",
+        "android_client_info": {
+          "package_name": "com.example.pilaskow.bookrentallocator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884113086652-hne5euq49rmin1c8rvv4v9461sr86q6v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pilaskow.bookrentallocator",
+            "certificate_hash": "29d6a76b3714bd9b5c58a6817070ddbcbdeff399"
+          }
+        },
+        {
+          "client_id": "884113086652-qjlq65q5kittgop56k5gg02sbkl0uan1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLHpb1S_0NFzKKaUiEcOfyAxbH4Lp7nIw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884113086652-qjlq65q5kittgop56k5gg02sbkl0uan1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
