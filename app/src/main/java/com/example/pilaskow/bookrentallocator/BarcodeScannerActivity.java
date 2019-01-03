@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+// wymaga wyrazenia zgody na korzystanie przez aplikacje z aparatu
 
 public class BarcodeScannerActivity extends AppCompatActivity implements ZXingScannerView.ResultHandler{
 
