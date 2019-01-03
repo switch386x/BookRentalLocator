@@ -6,4 +6,5 @@
     <string name = "username">Username</string>
     <string name = "password">Password</string>
     <string name = "login_title">BookRental Locator</string>
+    <string name = "rent_activity_access">Rent Activity Access</string>
 </resources>

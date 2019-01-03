@@ -36,8 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText password = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.login);
         mAuth = FirebaseAuth.getInstance();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
