@@ -1,5 +1,6 @@
 package com.example.pilaskow.bookrentallocator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pilaskow.bookrentallocator.model.User;
@@ -20,24 +24,29 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends AppCompatActivity {
+
     private FirebaseAuth mAuth;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        final TextView loginText = findViewById(R.id.loginTitle);
+        final EditText username = findViewById(R.id.username);
+        final EditText password = findViewById(R.id.password);
+        Button loginButton = findViewById(R.id.login);
         mAuth = FirebaseAuth.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view){
+                login(username.getText().toString(),password.getText().toString());
             }
+
         });
+
     }
 
     @Override
@@ -48,10 +57,10 @@ public class LoginActivity extends AppCompatActivity {
             User user = User.getInstance();
             user.setId(currentUser.getProviderId());
             user.setUserName(currentUser.getDisplayName());
-            Log.d("test", "siema");
+            //Log.d("test", "siema");
         }
         else
-            login("test@test.test", "testtest");
+            login("test@test.test", "testtest");  // ?? czy pobierac usera z pol logowania?
     }
 
     private void login(String email, String password) {
@@ -60,24 +69,23 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             User mUser = User.getInstance();
                             if (user != null) {
                                 String path = "users/" + user.getProviderId();
                                 DatabaseReference ref = database.getReference(path);
-                                Log.d("test", ref.getKey());
+                                //Log.d("test", ref.getKey());
                                 mUser.setId(user.getProviderId());
+                                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(startIntent);
 //                                mUser.setUserName(user.getDisplayName());
                             }
                         } else {
-                            // If sign in fails, display a message to the user.
                             Log.d("test", "signInWithEmail:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
 
-                        // ...
                     }
                 });
     }
