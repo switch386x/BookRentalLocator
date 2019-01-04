@@ -2,9 +2,10 @@
     <string name="app_name">BookRentalLocator</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name = "login">Login</string>
-    <string name = "username">Username</string>
-    <string name = "password">Password</string>
-    <string name = "login_title">BookRental Locator</string>
-    <string name = "rent_activity_access">Rent Activity Access</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login_title">BookRental Locator</string>
+    <string name="rent_activity_access">Rent Activity Access</string>
+    <string name="searchingBook">Wyszukiwanie książek</string>
 </resources>

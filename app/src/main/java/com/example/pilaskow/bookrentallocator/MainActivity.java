@@ -19,12 +19,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);;
         Button buttonRent = findViewById(R.id.rentActivityAccess);
 
+        final String userId = "16576"; // dopisz mi tutaj, lub gdzieś indziej ajdika
+
         buttonRent.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), RentActivity.class);
+                startIntent.putExtra("userId", userId);
                 startActivity(startIntent);
+            }
+        });
+
+        Button searchingBt = findViewById(R.id.searchingActivButton);
+        searchingBt.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent searIntent = new Intent(getApplicationContext(), SearchingActivity.class);
+                startActivity(searIntent);
             }
         });
 

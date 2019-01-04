@@ -24,11 +24,14 @@ public class RentActivity extends AppCompatActivity {
     private ArrayList basket = new ArrayList();
     private DatabaseReference booksDR = mBooksRef.child("books");
     private Book bookToBasket = new Book();
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent);
+        Intent mainActivityIntent = getIntent();
+        userId = mainActivityIntent.getStringExtra("userId");
     }
 
     public void search(View view){
@@ -111,8 +114,8 @@ public class RentActivity extends AppCompatActivity {
     public void addToBasket(View view){
         basket.add(bookToBasket);
         DatabaseReference bookDR = booksDR.child(bookToBasket.getiSBN());
-        bookDR.child("condition").setValue("zarezerwoana");
-        Toast.makeText(RentActivity.this, "Dodano książkę do koszyka", Toast.LENGTH_LONG).show();
+        bookDR.child("condition").setValue(userId);
+        Toast.makeText(RentActivity.this, "Książka została pożyczona", Toast.LENGTH_SHORT).show();
         final Button rentBt = (Button) findViewById(R.id.rentButton);
         final Button nextBt = (Button) findViewById(R.id.nextStep);
         rentBt.setVisibility(View.INVISIBLE);
@@ -122,12 +125,10 @@ public class RentActivity extends AppCompatActivity {
 
     public void nextStep(View view){
         Intent summaryIntent = new Intent(this, SummaryActivity.class);
-       /* for(int i=0;i<basket.size();i++){
-            String test = ((Book) basket.get(i)).getTitle();
-            Toast.makeText(RentActivity.this, test, Toast.LENGTH_LONG).show();
-        }*/
-        summaryIntent.putExtra("basket",basket);
-        //startActivity(summaryIntent);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("basket",basket);
+        summaryIntent.putExtras(bundle);
+        startActivity(summaryIntent);
     }
 
 

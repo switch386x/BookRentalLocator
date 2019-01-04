@@ -26,8 +26,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".BarcodeScannerActivity" />
-        <activity android:name=".RentActivity" ></activity>
-        <activity android:name=".SummaryActivity"></activity>
+        <activity android:name=".RentActivity" />
+        <activity android:name=".SummaryActivity" />
+        <activity android:name=".SearchingActivity" />
+        <activity android:name=".ResultActivity"></activity>
     </application>
 
 </manifest>

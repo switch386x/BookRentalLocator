@@ -1,8 +1,9 @@
 package com.example.pilaskow.bookrentallocator.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Book {
+public class Book implements Serializable {
     public String getTitle() {
         return title;
     }
@@ -59,5 +60,16 @@ public class Book {
 
     String iSBN;
 
+    public Book(String iSBN, String title, ArrayList author, String year, String publishingHouse, String condition){
+        this.iSBN = iSBN;
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.publishingHouse = publishingHouse;
+        this.condition = condition;
+    }
 
+    public Book(){
+
+    }
 }
