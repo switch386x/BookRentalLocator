@@ -1,10 +1,13 @@
 package com.example.pilaskow.bookrentallocator;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -62,6 +65,25 @@ public class LoginActivity extends AppCompatActivity {
             login("test@test.test", "testtest");  // ?? czy pobierac usera z pol logowania?
     }
 
+    private void showRulesDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setMessage("siema");
+        dialog.setPositiveButton("nazwa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(startIntent);
+            }
+        });
+        dialog.setNegativeButton("nie akceptuje", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.create().show();
+    }
+
     private void login(String email, String password) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -74,9 +96,8 @@ public class LoginActivity extends AppCompatActivity {
                                 String path = "users/" + user.getProviderId();
                                 DatabaseReference ref = database.getReference(path);
                                 //Log.d("test", ref.getKey());
-                                mUser.setId(user.getProviderId());
-                                Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(startIntent);
+                                mUser.setId(user.getUid());
+                                showRulesDialog();
 //                                mUser.setUserName(user.getDisplayName());
                             }
                         } else {

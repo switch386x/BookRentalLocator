@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.pilaskow.bookrentallocator.model.User;
+
 public class MainActivity extends AppCompatActivity {
 // tu menusy do reszty aktywnosci
     @Override
@@ -19,14 +21,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);;
         Button buttonRent = findViewById(R.id.rentActivityAccess);
 
-        final String userId = "16576"; // dopisz mi tutaj, lub gdzieś indziej ajdika
+        // dopisz mi tutaj, lub gdzieś indziej ajdika
 
         buttonRent.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), RentActivity.class);
-                startIntent.putExtra("userId", userId);
+                startIntent.putExtra("userId", User.getInstance().getId());
                 startActivity(startIntent);
             }
         });
