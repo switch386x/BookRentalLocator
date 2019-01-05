@@ -38,7 +38,7 @@ public class SearchingActivity extends AppCompatActivity {
                 EditText publishingHouseEt = (EditText) findViewById(R.id.pubHouseEditText);
                 Bundle bundle = new Bundle();
                 ArrayList<Book> foundBooks = new ArrayList();
-                String parameter = "Wyniki wyszukiwania dla:";
+                String parameter = getString(R.string.search_result);
                 String findTitle ="";String findAuthor = ""; String findYear = ""; String findPubHouse="";
                 if(!titleEt.getText().toString().equals("")) {
                     findTitle = titleEt.getText().toString();

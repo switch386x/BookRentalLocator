@@ -59,23 +59,22 @@ public class LoginActivity extends AppCompatActivity {
             User user = User.getInstance();
             user.setId(currentUser.getProviderId());
             user.setUserName(currentUser.getDisplayName());
-            //Log.d("test", "siema");
         }
         else
-            login("test@test.test", "testtest");  // ?? czy pobierac usera z pol logowania?
+            login("test@test.test", "testtest");
     }
 
     private void showRulesDialog(){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setMessage("siema");
-        dialog.setPositiveButton("nazwa", new DialogInterface.OnClickListener() {
+        dialog.setMessage(R.string.regulamin);
+        dialog.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent startIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(startIntent);
             }
         });
-        dialog.setNegativeButton("nie akceptuje", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(R.string.refuse, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -102,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } else {
                             Log.d("test", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                            Toast.makeText(getApplicationContext(), getString(R.string.auth_failed),
                                     Toast.LENGTH_SHORT).show();
                         }
 

@@ -16,6 +16,7 @@ public class SummaryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
         Button backToMenuBt = (Button) findViewById(R.id.backToMenuButton);

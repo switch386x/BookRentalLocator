@@ -8,4 +8,16 @@
     <string name="login_title">BookRental Locator</string>
     <string name="rent_activity_access">Rent Activity Access</string>
     <string name="searchingBook">Wyszukiwanie książek</string>
+    <string name="regulamin">regulamin korzystania z aplikacji BookRental Locator. Terms and Agreements</string>
+    <string name="accept">akceptuje regulamin</string>
+    <string name="refuse">nie akceptuje regulaminu</string>
+    <string name="auth_failed">Authentication failed.</string>
+    <string name="empty_string" />
+    <string name="bookcode_notfound">Książka o podanym kodzie nie istnieje.</string>
+    <string name="database_error">Wystąpił błąd. Spróbuj ponownie.</string>
+    <string name="book_rented">Książka została pożyczona</string>
+    <string name="parametrized_book_not_found">Nie znaleziono książek o podanych parametrach</string>
+    <string name="book_available">Książka jest dostępna</string>
+    <string name="book_already_rented">Książka jest wypożyczona</string>
+    <string name="search_result">Wyniki wyszukiwania dla:</string>
 </resources>

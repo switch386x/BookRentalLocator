@@ -23,12 +23,12 @@ public class ResultActivity extends AppCompatActivity {
             Bundle bundle = getIntent().getExtras();
                 results += bundle.getString("parameters") + "\n\n\n";
                 foundBooks = (ArrayList<Book>) bundle.getSerializable("books");
-                if(foundBooks.size()==0) results +="Nie znaleziono książek o podanych parametrach";
+                if(foundBooks.size()==0) results +=getString(R.string.parametrized_book_not_found);
                     for (int i = 0; i < foundBooks.size(); i++) {
                         Book book = (Book) foundBooks.get(i);
                         String conditional;
-                        if(book.getCondition().equals("dostępna")) conditional = "Książka jest dostępna";
-                        else conditional = "Książka jest wypożyczona";
+                        if(book.getCondition().equals("dostepna")) conditional = getString(R.string.book_available);
+                        else conditional = getString(R.string.book_already_rented);
                         String authorsNames = "";
                         for(int j = 0; j< book.getAuthor().size();j++){
                             if(j!=0) authorsNames += ", ";

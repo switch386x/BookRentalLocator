@@ -40,7 +40,7 @@ public class RentActivity extends AppCompatActivity {
         final EditText iSBNEdTxt = (EditText) findViewById(R.id.iSBNEditText);
         String numberISBN = iSBNEdTxt.getText().toString();
         rentBt.setVisibility(View.INVISIBLE);
-        informationTV.setText("");
+        informationTV.setText(getString(R.string.empty_string));
         findBook(numberISBN);
     }
 
@@ -82,12 +82,12 @@ public class RentActivity extends AppCompatActivity {
                     book.setAuthor(authorsNameAL);
                     showInfo(book);
                 } catch (NullPointerException e) {
-                    Toast.makeText(RentActivity.this, "Książka o podanym kodzie nie istnieje.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RentActivity.this, getString(R.string.bookcode_notfound), Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(RentActivity.this, "Wystąpił błąd. Spróbuj ponownie.", Toast.LENGTH_LONG).show();
+                Toast.makeText(RentActivity.this, getString(R.string.database_error), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -101,9 +101,9 @@ public class RentActivity extends AppCompatActivity {
                 if (i != 0) author += ", ";
                 author += book.getAuthor().get(i);
             }
-            informationTV.setText("Tytuł: "+ book.getTitle() + "\nAutor: " + author + "\nRok wydania: " + book.getYear() + "\n\nKsiążka jest " + book.getCondition());
+            informationTV.setText("Tytuł: "+ book.getTitle() + "\nAutor: " + author + "\nRok wydania: " + book.getYear() + "\n\nKsiążka jest " + book.getCondition());  //stringBuilder
             final Button rentBt = (Button) findViewById(R.id.rentButton);
-            if(book.getCondition().equals("dostępna")) {
+            if(book.getCondition().equals("dostepna")) {
                 bookToBasket = book;
                 rentBt.setVisibility(View.VISIBLE);
             }
@@ -115,7 +115,7 @@ public class RentActivity extends AppCompatActivity {
         basket.add(bookToBasket);
         DatabaseReference bookDR = booksDR.child(bookToBasket.getiSBN());
         bookDR.child("condition").setValue(userId);
-        Toast.makeText(RentActivity.this, "Książka została pożyczona", Toast.LENGTH_SHORT).show();
+        Toast.makeText(RentActivity.this, getString(R.string.book_rented), Toast.LENGTH_SHORT).show();
         final Button rentBt = (Button) findViewById(R.id.rentButton);
         final Button nextBt = (Button) findViewById(R.id.nextStep);
         rentBt.setVisibility(View.INVISIBLE);
