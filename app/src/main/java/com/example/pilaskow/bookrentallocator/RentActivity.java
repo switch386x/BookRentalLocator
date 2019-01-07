@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.pilaskow.bookrentallocator.model.Book;
+import com.example.pilaskow.bookrentallocator.model.Rental;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,7 +82,7 @@ public class RentActivity extends AppCompatActivity {
                     }
                     book.setAuthor(authorsNameAL);
                     showInfo(book);
-                } catch (NullPointerException e) {
+                } catch (Exception e) {
                     Toast.makeText(RentActivity.this, getString(R.string.bookcode_notfound), Toast.LENGTH_LONG).show();
                 }
             }
@@ -101,9 +102,11 @@ public class RentActivity extends AppCompatActivity {
                 if (i != 0) author += ", ";
                 author += book.getAuthor().get(i);
             }
-            informationTV.setText("Tytuł: "+ book.getTitle() + "\nAutor: " + author + "\nRok wydania: " + book.getYear() + "\n\nKsiążka jest " + book.getCondition());  //stringBuilder
+            String condition = book.getCondition();
+            if(!condition.equals("dostępna")) condition = "wypożyczona";
+            informationTV.setText("Tytuł: "+ book.getTitle() + "\nAutor: " + author + "\nRok wydania: " + book.getYear() + "\n\nKsiążka jest " + condition);  //stringBuilder
             final Button rentBt = (Button) findViewById(R.id.rentButton);
-            if(book.getCondition().equals("dostepna")) {
+            if(book.getCondition().equals("dostępna")) {
                 bookToBasket = book;
                 rentBt.setVisibility(View.VISIBLE);
             }
@@ -111,16 +114,35 @@ public class RentActivity extends AppCompatActivity {
     }
 
 
-    public void addToBasket(View view){
-        basket.add(bookToBasket);
+    public void rent(View view){
         DatabaseReference bookDR = booksDR.child(bookToBasket.getiSBN());
-        bookDR.child("condition").setValue(userId);
-        Toast.makeText(RentActivity.this, getString(R.string.book_rented), Toast.LENGTH_SHORT).show();
-        final Button rentBt = (Button) findViewById(R.id.rentButton);
-        final Button nextBt = (Button) findViewById(R.id.nextStep);
-        rentBt.setVisibility(View.INVISIBLE);
-        nextBt.setVisibility(View.VISIBLE);
-        bookToBasket = null;
+        final boolean[] available = new boolean[1];
+        bookDR.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if((dataSnapshot.child("condition").getValue(String.class)).equals("dostępna"))
+                available[0] = true;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        if(available[0] = true){
+            basket.add(bookToBasket);
+            mBooksRef.child("rental").child(userId).push().setValue(new Rental(bookToBasket.getiSBN()));
+            bookDR.child("condition").setValue(userId);
+            Toast.makeText(RentActivity.this, getString(R.string.book_rented), Toast.LENGTH_SHORT).show();
+            final Button rentBt = (Button) findViewById(R.id.rentButton);
+            final Button nextBt = (Button) findViewById(R.id.nextStep);
+            rentBt.setVisibility(View.INVISIBLE);
+            nextBt.setVisibility(View.VISIBLE);
+            bookToBasket = null;
+        }
+        else{
+            Toast.makeText(RentActivity.this, getString(R.string.book_already_rented), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void nextStep(View view){

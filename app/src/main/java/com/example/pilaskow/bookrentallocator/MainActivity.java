@@ -42,7 +42,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(searIntent);
             }
         });
+        Button buttonHistory = (Button) findViewById(R.id.showHistoryButton);
+        buttonHistory.setOnClickListener(new View.OnClickListener(){
 
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), HistoryActivity.class);
+                startIntent.putExtra("userId", User.getInstance().getId());
+                startActivity(startIntent);
+            }
+        });
 
     }
 

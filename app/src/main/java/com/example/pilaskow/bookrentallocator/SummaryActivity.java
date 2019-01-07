@@ -1,6 +1,9 @@
 package com.example.pilaskow.bookrentallocator;
 
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,10 +43,33 @@ public class SummaryActivity extends AppCompatActivity {
     public void showSummary(ArrayList basket){
         TextView summaryTextView = (TextView) findViewById(R.id.summaryTextView);
         String info = "Wypożyczono:\n\n";
-        for(int i=0;i<basket.size();i++){
+        int i = 0;
+        while(i<basket.size()){
             Book book = (Book) basket.get(i);
             info += "- "+book.getTitle()+" ("+book.getiSBN()+")\n";
+            i++;
         }
+        showNotification(i);
         summaryTextView.setText(info);
+    }
+
+
+    public void showNotification(int numberOfBooks){
+        String text;
+        if(numberOfBooks==1) text = "Wypożyczono książkę";
+        else if(numberOfBooks==2) text = "Wypożyczono 2 książki";
+        else text = "Wypożyczono książki";
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        PendingIntent clickNotif = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "CHANNEL_ID")
+                .setSmallIcon(R.mipmap.book_rental)
+                .setContentTitle(getString(R.string.library_name))
+                .setContentText(text)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(clickNotif)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(0, mBuilder.build());
     }
 }

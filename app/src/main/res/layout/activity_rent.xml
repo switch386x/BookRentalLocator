@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Identyfikator książki:"
+        android:text="@string/bookId"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="scan"
-        android:text="Skanuj kod"
+        android:text="@string/scanCode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -39,7 +39,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:onClick="search"
-        android:text="Znajdź książkę"
+        android:text="@string/findBook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,8 +64,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:onClick="addToBasket"
-        android:text="Dodaj do koszyka"
+        android:onClick="rent"
+        android:text="@string/rentBook"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.687"
@@ -81,7 +81,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="nextStep"
-        android:text="Dalej"
+        android:text="@string/next"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,10 +98,11 @@
         android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Wpisz numer"
+        android:hint="@string/writeISBN"
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
         app:layout_constraintEnd_toStartOf="@+id/scanButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:importantForAutofill="no" />
 
 </android.support.constraint.ConstraintLayout>

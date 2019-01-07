@@ -34,7 +34,7 @@ public class ResultActivity extends AppCompatActivity {
                             if(j!=0) authorsNames += ", ";
                             authorsNames += (String) book.getAuthor().get(j);
                         }
-                        results += book.getTitle() + " (" + book.getiSBN() + ")\n\t"+ authorsNames + "\t" + book.getPublishingHouse() + "\n\t" + book.getYear() + "\n\t"+conditional+"\n\n";
+                        results += book.getTitle() + " (" + book.getiSBN() + ")\n\t"+ authorsNames + "\n\t" + book.getPublishingHouse() + "\n\t" + book.getYear() + "\n\t"+conditional+"\n\n";
                     }
 
 

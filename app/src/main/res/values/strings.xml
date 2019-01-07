@@ -6,7 +6,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login_title">BookRental Locator</string>
-    <string name="rent_activity_access">Rent Activity Access</string>
+    <string name="rent_activity_access">Wypożycz książkę</string>
     <string name="searchingBook">Wyszukiwanie książek</string>
     <string name="regulamin">regulamin korzystania z aplikacji BookRental Locator. Terms and Agreements</string>
     <string name="accept">akceptuje regulamin</string>
@@ -20,4 +20,25 @@
     <string name="book_available">Książka jest dostępna</string>
     <string name="book_already_rented">Książka jest wypożyczona</string>
     <string name="search_result">Wyniki wyszukiwania dla:</string>
+    <string name="library_name">Biblioteka Publiczna</string>
+    <string name="history">Historia wypożyczeń</string>
+    <string name="showHistoryBtTxt">Zobacz historię wypożyczeń</string>
+    <string name="drink">Nie pij</string>
+    <string name="silent">Zachowuj się cicho</string>
+    <string name="inLibrary">W BIBLIOTECE:</string>
+    <string name="phone">Nie rozmawiaj przez telefon</string>
+    <string name="food">Nie spożywaj posiłków</string>
+    <string name="noHistory">Jeszcze nie skorzystałeś z naszej biblioteki.</string>
+    <string name="bookId">Identyfikator książki:</string>
+    <string name="scanCode">Skanuj kod</string>
+    <string name="findBook">Znajdź książkę</string>
+    <string name="rentBook">Wypożycz książkę</string>
+    <string name="next">Dalej</string>
+    <string name="writeISBN">Wpisz numer</string>
+    <string name="search">Szukaj</string>
+    <string name="title">Tytuł:</string>
+    <string name="author">Autor:</string>
+    <string name="year">Rok wydania:</string>
+    <string name="pubHouse">Wydawnictwo:</string>
+    <string name="goBack">Powrót</string>
 </resources>

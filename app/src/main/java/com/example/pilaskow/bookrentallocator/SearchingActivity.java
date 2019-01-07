@@ -102,6 +102,7 @@ public class SearchingActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+        findViewById(R.id.searchButton).setVisibility(View.VISIBLE);
         return listOfBooks;
     }
 }

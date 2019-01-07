@@ -14,7 +14,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".LoginActivity"
             android:label="BookRental Locator"
@@ -25,11 +26,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BarcodeScannerActivity" />
-        <activity android:name=".RentActivity" />
-        <activity android:name=".SummaryActivity" />
-        <activity android:name=".SearchingActivity" />
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".BarcodeScannerActivity"
+            android:parentActivityName=".RentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RentActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SummaryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".SearchingActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ResultActivity"
+            android:parentActivityName=".SearchingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HistoryActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
