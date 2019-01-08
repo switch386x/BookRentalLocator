@@ -94,7 +94,7 @@ public class SearchingActivity extends AppCompatActivity {
                     for (DataSnapshot author : authorsNames) {
                         authorsNameAL.add(author.getValue(String.class));
                     }
-                    listOfBooks.add(new Book(book.getKey(), book.child("title").getValue(String.class), authorsNameAL, String.valueOf(book.child("year").getValue(Long.class)),book.child("publishingHouse").getValue(String.class),book.child("condition").getValue(String.class) ));
+                    listOfBooks.add(new Book(book.getKey(), book.child("title").getValue(String.class), authorsNameAL, String.valueOf(book.child("year").getValue(Integer.class)),book.child("publishingHouse").getValue(String.class),book.child("condition").getValue(String.class) ));
                 }
 
             }
@@ -102,7 +102,6 @@ public class SearchingActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        findViewById(R.id.searchButton).setVisibility(View.VISIBLE);
         return listOfBooks;
     }
 }

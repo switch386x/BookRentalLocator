@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name = "colorLoginButtonBackground">#FF91</color>
-    <color name = "colorLoginButton">#FF01</color>
+    <color name="colorPrimary">#FF00FF</color> //magenta
+    <color name="colorPrimaryDark">#4B0082</color>  //indigo
+    <color name="colorAccent">#DEB887</color>  //burlywood
+    <color name = "colorLoginButtonBackground">#00BFFF</color>
+    <color name = "colorLoginButton">#FFFFF1</color>
+    <color name = "colorBasic">#FF1</color>
 </resources>

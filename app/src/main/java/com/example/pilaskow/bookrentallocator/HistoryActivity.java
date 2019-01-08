@@ -44,7 +44,7 @@ public class HistoryActivity extends AppCompatActivity {
                     }
                     if(text1=="" && text2=="") historyContentTV.setText(getString(R.string.noHistory));
                     else if (text2=="") historyContentTV.setText(text1);
-                    else historyContentTV.setText("Nie zapomnij zwrócić:\n"+text2+"\n\n"+text1);
+                    else historyContentTV.setText(getString(R.string.dontForget)+text2+"\n\n"+text1);
             }
 
             @Override

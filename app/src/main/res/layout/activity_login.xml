@@ -6,15 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".BarcodeScannerActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo"
+        android:src="@mipmap/book_rental"
+        android:layout_marginTop="15dp"
+        />
+
     <TextView
         android:id="@+id/loginTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_title"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="69dp"
         android:textSize="30dp"
-        android:textColor="@color/colorLoginButton"
+        android:textColor="@color/colorLoginButtonBackground"
         />
 
 
@@ -30,7 +38,9 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:hint="@string/username" />
+
 
         <EditText
             android:id="@+id/password"
@@ -41,10 +51,10 @@
 
         <Button
             android:id="@+id/login"
-            android:layout_width="80dp"
+            android:layout_width="130dp"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="50dp"
             android:background="@color/colorLoginButtonBackground"
             android:text="@string/login"
             android:textColor="@color/colorLoginButton" />

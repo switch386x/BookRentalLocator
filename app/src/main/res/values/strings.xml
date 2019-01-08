@@ -41,4 +41,5 @@
     <string name="year">Rok wydania:</string>
     <string name="pubHouse">Wydawnictwo:</string>
     <string name="goBack">Powrót</string>
+    <string name="dontForget">Nie zapomnij zwrócić: </string>
 </resources>
