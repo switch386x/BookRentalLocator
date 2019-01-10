@@ -27,7 +27,7 @@ public class ResultActivity extends AppCompatActivity {
                     for (int i = 0; i < foundBooks.size(); i++) {
                         Book book = (Book) foundBooks.get(i);
                         String conditional;
-                        if(book.getCondition().equals("dostepna")) conditional = getString(R.string.book_available);
+                        if(book.getCondition().equals("dostępna")) conditional = getString(R.string.book_available);
                         else conditional = getString(R.string.book_already_rented);
                         String authorsNames = "";
                         for(int j = 0; j< book.getAuthor().size();j++){
